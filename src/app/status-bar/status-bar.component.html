@@ -1,0 +1,34 @@
+<div class="row" data-bind="style:{ height: '58px'}">
+    <div class="col-md-12">
+
+        <!-- inizio -->
+        <nav class="navbar navbar-inverse navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#" id="label" data-bind="click:changeBrightness">Infotainment</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="navbar-right">
+                    <span class="navbar-text" id="status">
+                        <fa-icon *ngIf="statusbar.bluetooth" [icon]="faBluetoothB" size="lg" style="color: dodgerblue"></fa-icon>
+                        <fa-icon *ngIf="!statusbar.bluetooth" [icon]="faBluetoothB" size="lg"></fa-icon>
+                        <fa-icon *ngIf="statusbar.wifi" [icon]="faWifi" size="lg" style="color: dodgerblue"></fa-icon>
+                        <fa-icon *ngIf="!statusbar.wifi" [icon]="faWifi" size="lg"></fa-icon>
+                        <span id="batt" style="color:dodgerblue"> {{statusbar.batteryValue}}% </span>
+                        <fa-icon *ngIf="statusbar.batteryValue <= 10" [icon]="faBatteryEmpty" size="lg" style="color:crimson"></fa-icon>
+                        <fa-icon *ngIf="statusbar.batteryValue > 10 && statusbar.batteryValue <= 50" [icon]="faBatteryQuarter" size="lg" style="color:dodgerblue"></fa-icon>
+                        <fa-icon *ngIf="statusbar.batteryValue > 50 && statusbar.batteryValue <= 75" [icon]="faBatteryHalf" size="lg" style="color:dodgerblue"></fa-icon>
+                        <fa-icon *ngIf="statusbar.batteryValue > 75 && statusbar.batteryValue <= 90" [icon]="faBatteryThreeQuarters" size="lg" style="color:dodgerblue"></fa-icon>
+                        <fa-icon *ngIf="statusbar.batteryValue > 90" [icon]="faBatteryFull" size="lg" style="color:dodgerblue"></fa-icon>
+                    </span>
+                    <p class="navbar-text" id="hour" style="color:dodgerblue">{{statusbar.hour}}</p>
+                    <p class="navbar-text" id="off" data-bind="click: turnoff"><fa-icon [icon]="faPowerOff" size="lg" style="color:crimson"></fa-icon></p>
+                </div><!-- /.navbar-right -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <!-- fine -->
+
+    </div> <!-- col-md-12 -->
+</div> <!-- row -->
