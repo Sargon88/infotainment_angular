@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { faWifi, faBatteryEmpty, faBatteryQuarter, faBatteryHalf,faBatteryThreeQuarters,faBatteryFull, faPowerOff } from '@fortawesome/free-solid-svg-icons';
 import { faBluetoothB } from '@fortawesome/free-brands-svg-icons';
-import { faWifi } from '@fortawesome/free-solid-svg-icons';
-import { faBatteryEmpty } from '@fortawesome/free-solid-svg-icons';
-import { faBatteryQuarter } from '@fortawesome/free-solid-svg-icons';
-import { faBatteryHalf } from '@fortawesome/free-solid-svg-icons';
-import { faBatteryThreeQuarters } from '@fortawesome/free-solid-svg-icons';
-import { faBatteryFull } from '@fortawesome/free-solid-svg-icons';
-import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
 import { statusbar } from '../classes/statusbar';
+import { SenderService } from '../sender.service';
+import { StatusBarService } from '../status-bar.service';
+
 
 
 @Component({
@@ -18,7 +14,6 @@ import { statusbar } from '../classes/statusbar';
 })
 export class StatusBarComponent implements OnInit {
 
-  faCoffee = faCoffee;
   faBluetoothB = faBluetoothB;
   faWifi = faWifi;
   faBatteryEmpty = faBatteryEmpty;
@@ -30,14 +25,26 @@ export class StatusBarComponent implements OnInit {
 
   statusbar: statusbar;
 
-  constructor() { }
+  constructor(private service: StatusBarService, private sender: SenderService ) { }
 
   ngOnInit() {
-    this.getStatus();
+    this.service.status.subscribe(msg => {
+      if(msg.event == "status"){
+        this.statusbar = JSON.parse(msg.data);
+      }
+      
+    });
+
+    this.service.sendMsg("getStatus", "");
+    this.service.sendMsg("getPage", "");
   }
 
-  getStatus(): void{
-    this.statusbar = JSON.parse('{"bluetooth":true, "wifi":true, "batteryValue":"100", "hour":"10:30"}');
+  changeBrightness(): void {
+    this.service.sendMsg("brightness", "");
+  }
+
+  reboot(): void{
+    this.service.sendMsg("reboot", "");
   }
 
 }

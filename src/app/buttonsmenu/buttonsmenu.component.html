@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-12" id="menu">
+        <div class="btn-group btn-group-justified" role="group">
+            <div class="btn-group" role="group" *ngIf="page != 'home'">
+                <button class="btn btn-default btn-lg" type="button" routerLink="/home">
+                    <fa-icon [icon]="faPhone" style="color: dodgerblue"></fa-icon>
+                     <!--   <i class="fas fa-phone" data-bind="style: { color: loaded() ? 'dodgerblue' : 'crimson' }"></i> -->
+                </button>
+            </div>
+            <div class="btn-group" role="group" *ngIf="page != 'maps'">
+                <button class="btn btn-default btn-lg" type="button" routerLink="/maps">
+                    <fa-icon [icon]="faMapMarkerAlt" style="color: dodgerblue"></fa-icon>
+                </button>
+            </div>
+            <div class="btn-group" role="group" *ngIf="page != 'omx'">
+                <button class="btn btn-default btn-lg" type="submit" routerLink="/omx">
+                    <fa-icon [icon]="faCompactDisc" style="color: dodgerblue"></fa-icon>
+                </button>
+            </div>
+            <div class="btn-group" role="group" *ngIf="page != 'youtube'">
+                <button class="btn btn-default btn-lg" type="submit" routerLink="/youtube">
+                    <fa-icon [icon]="faYoutube" style="color: dodgerblue"></fa-icon>
+                </button>
+            </div>
+            <div class="btn-group" role="group" *ngIf="page != 'car'">
+                <button class="btn btn-default btn-lg" type="submit" routerLink="/car">
+                    <fa-icon [icon]="faCar" style="color: dodgerblue"></fa-icon>
+                </button>                   
+            </div>
+        </div>
+    </div>
+</div>
