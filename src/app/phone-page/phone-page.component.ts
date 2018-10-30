@@ -41,6 +41,8 @@ export class PhonePageComponent implements OnInit {
       }
       
     });
+
+    this.service.sendSocketMessage("getStatus", "");
   }
 
 }

@@ -2,33 +2,29 @@
 
 <br />
 <div id="ytpage" class="row">
-  <div class="col-xs-12">
+  <div class="col">
         <div class="row">
-            <div class="col-xs-12"><h3>Youtube History</h3></div>
-            <div class="col-xs-12"><br /></div>
+            <div class="col"><h3>Youtube History</h3></div>
+            <div class="col"><br /></div>
         </div>
 
-        <!-- ko if: ytUrlHistory().length == 0 -->
-        <div class="row">
-            <div class="col-xs-2 col-xs-offset-5" style="color: dodgerblue">
+        <div class="row" *ngIf="urls.length == 0">
+            <div class="col coloffset-5" style="color: dodgerblue">
                 <i class="fas fa-spinner fa-5x fa-pulse"></i>
             </div>
         </div>
-        <!-- /ko -->
 
-        <!-- ko if: ytUrlHistory().length != 0 -->
-        <div class="row">
-            <div class="col-xs-12">
+        <div class="row" *ngIf="urls.length != 0">
+            <div class="col">
                 <table class="table table-striped table-responsive">
-                    <tbody data-bind="foreach: ytUrlHistory">
+                    <tbody *ngFor="let url of urls">
                         <tr>
-                            <td data-bind="text: $data.description, click: $parent.playYoutubeVideo"></td>
-                            <td data-bind="text: $data.url"></td>
+                            <td data-bind="text: $data.description, click: $parent.playYoutubeVideo">{{description}}</td>
+                            <td data-bind="text: $data.url">{{url}}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>  
-        <!-- /ko -->
     </div>
 </div>

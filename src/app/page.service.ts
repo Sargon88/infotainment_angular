@@ -12,4 +12,9 @@ export class PageService {
   constructor(private sender: SenderService) { 
     this.page = <Subject<any>>sender.connect();
   }
+
+  sendSocketMessage(event: string, message: string){
+    this.sender.sendMsg(event, message);
+
+  }
 }
