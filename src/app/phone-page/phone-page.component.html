@@ -3,76 +3,94 @@
 <!-- MANCA LA PARTE IN ATTESA DEL CARICAMENTO -->
 <br/>
 <div class="row">
-    <div class="col-xs-12">
+    <div class="col">
         <div class="row">
             <!-- lista chiamate-->
-                <div class="col-xs-5">
+                <div class="col">
 
                     <!--- inizio modulo call -->
-                    <div class="row" *ngFor="let call of lastCalls">
-                        <div class="col-xs-12">
-                            <a data-bind="click: $parent.makeCall, disable:$parent.inCall" >
-                                    <div class="col-xs-9" *ngIf="call.name != ''" style="font-weight: bold">{{call.name}}</div>
-                                    <div class="col-xs-9" *ngIf="call.name == null" style="font-weight: bold">{{call.phNumber}}</div>
-                                <div class="col-xs-1">
-                                    <span *ngIf="call.callType == 1">
-                                        <fa-icon [icon]="faAngleDoubleLeft" style="color: firebrick;"></fa-icon>
-                                    </span>
-                                    <span *ngIf="call.callType == 2">
-                                        <fa-icon [icon]="faAngleDoubleRight" style="color: green;"></fa-icon>
-                                    </span>
-                                    <span *ngIf="call.callType == 3">
-                                        <fa-icon [icon]="faPhoneSlash"></fa-icon>
-                                    </span>
-                                    <span *ngIf="call.callType == 5">
-                                        <fa-icon [icon]="faPhoneSlash"></fa-icon>
-                                    </span>
+                    <div class="row ml-3" *ngFor="let call of lastCalls">
+                        <div class="col">
+                            <div class="row h-50">
+                                <div class="col btn-link">
+                                    <small>                              
+                                        <div class="row" data-bind="click: $parent.makeCall, disable:$parent.inCall">
+                                            <div class="col font-weight-bold">
+                                                <span *ngIf="call.name != ''">{{call.name}}</span>
+                                                <span *ngIf="call.name == null">{{call.phNumber}}</span>
+                                            </div>
+                                            <div class="col">
+                                                <span *ngIf="call.callType == 1">
+                                                    <fa-icon [icon]="faAngleDoubleLeft" style="color: firebrick;"></fa-icon>
+                                                </span>
+                                                <span *ngIf="call.callType == 2">
+                                                    <fa-icon [icon]="faAngleDoubleRight" style="color: green;"></fa-icon>
+                                                </span>
+                                                <span *ngIf="call.callType == 3">
+                                                    <fa-icon [icon]="faPhoneSlash"></fa-icon>
+                                                </span>
+                                                <span *ngIf="call.callType == 5">
+                                                    <fa-icon [icon]="faPhoneSlash"></fa-icon>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">{{call.callDayTime}}</div>
+                                        </div>
+                                </small>
                                 </div>
-                                <div class="col-xs-12">{{call.callDayTime}}</div>
-                            </a>
-                        </div>
-                        <div class="col-xs-12" class="center-block">-----</div>
-                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">-----</div>
+                            </div> <!-- row -->
+                        </div> <!-- col -->             
+                    </div> <!-- for -->
                     <!--- fine modulo call -->
 
                 </div>
             <!-- lista chiamate-->
             <!-- chiamate rapide-->
-                <div class="col-xs-6 col-xs-offset-1">
+                <div class="col">
 
                     <div class="row">
-                        <div class="col-xs-6" *ngFor="let contact of starredcontacts">
+                        <div class="col-sm-6" *ngFor="let contact of starredcontacts" style="height: 74px">
                             <button class="btn btn-primary btn-block" data-bind="click: $parent.makeCall, disable:$parent.inCall">
-                               <div class="col-xs-12">{{contact.name}}</div> 
-                               <div class="col-xs-12">{{contact.number}}</div>
-                               <br />
+                               <div class="col">{{contact.name}}</div> 
+                               <small><div class="col">{{contact.number}}</div></small>
                             </button>
-                            <div class="col-xs-12"><br/></div>
                         </div>
                     </div>
 
                     <!-- DEBUG -->
                     <div class="row">
-                        <div class="col-xs-12">DEBUG ------</div>
-                    </div>
-                    <table>
-                        <tr>
-                            <td>Latitude:</td>
-                            <td>{{lat}}</td>
-                        </tr>
-                        <tr>
-                            <td>Longitude:</td>
-                            <td>{{long}}</td>
-                        </tr>
-                        <tr>
-                            <td>Update:</td>
-                            <td>{{lastUpdate | date:'dd/MM/yyyy hh:mm:ss'}}</td>
-                        </tr>
-                    </table>
+                        <div class="col">
+                            <small>
 
-                   
-                    <div class="row">
-                        <div class="col-xs-12">DEBUG ------</div>
+                                <div class="row">
+                                    <div class="col">DEBUG ------</div>
+                                </div>
+                                <table>
+                                    <tr>
+                                        <td>Latitude:</td>
+                                        <td>{{lat}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Longitude:</td>
+                                        <td>{{long}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Update:</td>
+                                        <td>{{lastUpdate | date:'dd/MM/yyyy hh:mm:ss'}}</td>
+                                    </tr>
+                                </table>
+            
+                                
+                                <div class="row">
+                                    <div class="col">DEBUG ------</div>
+                                </div>
+
+                            </small>
+                        </div>
                     </div>
                     <!-- DEBUG -->
                 </div>
