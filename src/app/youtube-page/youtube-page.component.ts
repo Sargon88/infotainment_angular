@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PageService } from '../page.service';
+import { youtubeUrl } from '../classes/youtubeUrl';
 
 @Component({
   selector: 'app-youtube-page',
@@ -9,7 +10,7 @@ import { PageService } from '../page.service';
 export class YoutubePageComponent implements OnInit {
 
   page = "youtube";
-  urls: string[];
+  urls: youtubeUrl[];
 
   constructor(private service: PageService) { }
 
@@ -17,14 +18,18 @@ export class YoutubePageComponent implements OnInit {
     this. urls = [];
     this.service.page.subscribe(msg => {
       if(msg.event == "url history"){
-        console.log(msg);
-        var data = JSON.parse(msg.data);        
+        var data = JSON.parse(msg.data);   
+        this.urls = data.urls as youtubeUrl[];
         
       }
       
     });
 
     this.service.sendSocketMessage("youtube history", "");
+  }
+
+  playYoutubeVideo(url: string): void{
+    this.service.sendSocketMessage('open yt video', url);
   }
 
 }

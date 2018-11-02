@@ -19,8 +19,8 @@
                 <table class="table table-striped table-responsive">
                     <tbody *ngFor="let url of urls">
                         <tr>
-                            <td data-bind="text: $data.description, click: $parent.playYoutubeVideo">{{description}}</td>
-                            <td data-bind="text: $data.url">{{url}}</td>
+                            <td (click)="playYoutubeVideo(url)">{{url.description}}</td>
+                            <td>{{url.url}}</td>
                         </tr>
                     </tbody>
                 </table>
