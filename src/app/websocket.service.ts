@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import * as Rx from 'rxjs/Rx';
 import { environment } from '../environments/environment';
 import { socketmessage } from './classes/socketMessage';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class WebsocketService {
   private socket;
   subj: Rx.Subject<MessageEvent>;
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   connect(): Rx.Subject<MessageEvent> {
 
@@ -28,6 +29,13 @@ export class WebsocketService {
             observer.next(msg);
           }).on('set page', (data) => {
             var msg = new socketmessage("set page", data);
+
+            if(data == "ytPlay"){
+              this.router.navigate(['youtubeplay']);
+            } else if(data == "home"){
+              this.router.navigate(['home']);
+            }
+            
             observer.next(msg);
           }).on('phone', (data) => {
             var msg = new socketmessage("phone", data);

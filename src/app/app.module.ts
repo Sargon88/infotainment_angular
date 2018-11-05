@@ -10,6 +10,7 @@ import { StatusBarComponent } from './status-bar/status-bar.component';
 import { PhonePageComponent } from './phone-page/phone-page.component';
 import { ButtonsmenuComponent } from './buttonsmenu/buttonsmenu.component';
 import { YoutubePageComponent } from './youtube-page/youtube-page.component';
+import { YoutubeplayPageComponent } from './youtubeplay-page/youtubeplay-page.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { YoutubePageComponent } from './youtube-page/youtube-page.component';
     StatusBarComponent,
     PhonePageComponent,
     ButtonsmenuComponent,
-    YoutubePageComponent
+    YoutubePageComponent,
+    YoutubeplayPageComponent
   ],
   imports: [
     BrowserModule,
