@@ -45,5 +45,9 @@ export class PhonePageComponent implements OnInit {
     this.service.sendSocketMessage("getStatus", "");
   }
 
+  makeCall(number: string): void{
+    this.service.sendSocketMessage("start phone call", number);
+  }
+
 }
 

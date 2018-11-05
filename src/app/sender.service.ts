@@ -26,7 +26,9 @@ export class SenderService {
   }
 
   sendMsg(event, msg) {
+    console.log("sendMsg: " + event + " - " + msg);
     var socketMsg = new socketmessage(event, msg);
+    console.log("SOCKETMSG: " + JSON.stringify(socketMsg));
     this.messages.next(socketMsg);
   }
 

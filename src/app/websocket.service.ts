@@ -30,13 +30,16 @@ export class WebsocketService {
           }).on('set page', (data) => {
             var msg = new socketmessage("set page", data);
 
-            if(data == "ytPlay"){
+            if(data == "ytPlay" || data == '"ytPlay"'){
               this.router.navigate(['youtubeplay']);
-            } else if(data == "home"){
+            } else if(data == "home" || data == '"home"'){
               this.router.navigate(['home']);
+            } else if(data == "yt" || data == '"yt"'){
+              this.router.navigate(['youtube']);
             }
             
             observer.next(msg);
+
           }).on('phone', (data) => {
             var msg = new socketmessage("phone", data);
             observer.next(msg);

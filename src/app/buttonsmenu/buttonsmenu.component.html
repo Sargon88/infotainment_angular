@@ -2,23 +2,24 @@
     <div class="col" id="menu" style="height: 43px">
         <div class="btn-group  btn-group-lg w-100 nav-justified" role="group" style="height:46px">
 
-                <button class="nav-item btn btn-outline-secondary" type="button" routerLink="/home" *ngIf="page != 'home'">
+                <!-- <button class="nav-item btn btn-outline-secondary" type="button" routerLink="/home" *ngIf="page != 'home'"> -->
+                <button class="nav-item btn btn-outline-secondary" type="button" (click)="changePage('home')" *ngIf="page != 'home'">
                     <fa-icon [icon]="faPhone" style="color: dodgerblue"></fa-icon>
                 </button>
 
-                <button class="nav-item btn btn-outline-secondary" type="button" routerLink="/maps" *ngIf="page != 'maps'">
+                <button class="nav-item btn btn-outline-secondary" type="button" (click)="changePage('maps')" *ngIf="page != 'maps'">
                     <fa-icon [icon]="faMapMarkerAlt" style="color: dodgerblue"></fa-icon>
                 </button>
 
-                <button class="nav-item btn btn-outline-secondary" type="submit" routerLink="/omx" *ngIf="page != 'omx'">
+                <button class="nav-item btn btn-outline-secondary" type="submit" (click)="changePage('omx')" *ngIf="page != 'omx'">
                     <fa-icon [icon]="faCompactDisc" style="color: dodgerblue"></fa-icon>
                 </button>
 
-                <button class="nav-item btn btn-outline-secondary" type="submit" routerLink="/youtube" *ngIf="page != 'youtube'">
+                <button class="nav-item btn btn-outline-secondary" type="submit" (click)="changePage('yt')" *ngIf="page != 'youtube'">
                     <fa-icon [icon]="faYoutube" style="color: dodgerblue"></fa-icon>
                 </button>
 
-                <button class="nav-item btn btn-outline-secondary" type="submit" routerLink="/car" *ngIf="page != 'car'">
+                <button class="nav-item btn btn-outline-secondary" type="submit" (click)="changePage('car')" *ngIf="page != 'car'">
                     <fa-icon [icon]="faCar" style="color: dodgerblue"></fa-icon>
                 </button>                   
 

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
 
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -25,7 +26,8 @@ import { YoutubeplayPageComponent } from './youtubeplay-page/youtubeplay-page.co
     BrowserModule,
     ButtonsModule.forRoot(),
     FontAwesomeModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
