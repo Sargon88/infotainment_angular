@@ -3,10 +3,10 @@
 
         <!-- inizio -->
         <nav class="navbar nav-expand-lg navbar-dark bg-dark rounded" style="height: 52px">
-            <div class="navbar-brand" id="label" (click)="changeBrightness()">Infotainment</div>
+            <div class="navbar-brand" id="label" (click)="changeBrightness()"><img src="../../favicon.ico" width="65" height="65" alt=""> Infotainment</div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="navbar-right"  *ngIf="statusbar">
+            <div class="navbar-right" *ngIf="statusbar">
                 <span id="status">
                     <fa-icon class="ml-2" *ngIf="statusbar.bluetooth" [icon]="faBluetoothB" size="lg" style="color: dodgerblue"></fa-icon>                    
                     <fa-icon class="ml-2" *ngIf="!statusbar.bluetooth" [icon]="faBluetoothB" size="lg"></fa-icon>

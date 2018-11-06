@@ -12,6 +12,7 @@ import { PhonePageComponent } from './phone-page/phone-page.component';
 import { ButtonsmenuComponent } from './buttonsmenu/buttonsmenu.component';
 import { YoutubePageComponent } from './youtube-page/youtube-page.component';
 import { YoutubeplayPageComponent } from './youtubeplay-page/youtubeplay-page.component';
+import { OmxPageComponent } from './omx-page/omx-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { YoutubeplayPageComponent } from './youtubeplay-page/youtubeplay-page.co
     PhonePageComponent,
     ButtonsmenuComponent,
     YoutubePageComponent,
-    YoutubeplayPageComponent
+    YoutubeplayPageComponent,
+    OmxPageComponent
   ],
   imports: [
     BrowserModule,

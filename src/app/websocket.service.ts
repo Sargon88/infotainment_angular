@@ -36,6 +36,8 @@ export class WebsocketService {
               this.router.navigate(['home']);
             } else if(data == "yt" || data == '"yt"'){
               this.router.navigate(['youtube']);
+            } else if(data == "omx" || data == '"omx"'){
+              this.router.navigate(['omx']);
             }
             
             observer.next(msg);
