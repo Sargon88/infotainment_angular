@@ -12,7 +12,7 @@ export class OmxPageComponent implements OnInit {
 
   page = "omx";
   path: string[];
-  drives: string[];
+  drives: fileModel[];
   message: string;
   selectedPlaylist: playlistModel;
 
@@ -41,11 +41,12 @@ export class OmxPageComponent implements OnInit {
         this.service.page.subscribe(msg =>{
           if(msg.event == "loaded omx page"){
 
+            var driveArray: string[];
             var data = msg.data
             if(data != ""){
-              var driveArray = JSON.parse(data);
+              driveArray = JSON.parse(data);
 
-              this.drives(this.loadDrive(driveArray));
+              this.drives = this.loadDrive(driveArray);
               this.message="";
 
             } else {
@@ -58,12 +59,17 @@ export class OmxPageComponent implements OnInit {
     }
   }
 
-  loadDrive(driveArray: string[]): string[]{
+  loadDrive(driveArray: string[]): fileModel[]{
 
-    var tempDrives = $.map(driveArray, function(drive){
-        var d = new fileModel(drive, this.selectedPlaylist);
-        return d;
-    });
+    var tempDrives: fileModel[];
+
+    for(var i=0; i < driveArray.length; i++){
+      var drive = driveArray[i];
+
+      var d = new fileModel(drive, this.selectedPlaylist);
+      tempDrives.push(d);
+
+    }
 
     return tempDrives;
 
