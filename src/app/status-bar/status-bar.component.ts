@@ -24,14 +24,13 @@ export class StatusBarComponent implements OnInit {
   faPowerOff = faPowerOff;
 
   statusbar: statusbar;
-  clock: string;
+  clock: Date;
 
   constructor(private service: StatusBarService, private sender: SenderService ) { }
 
   ngOnInit() {
 
-    var d = new Date();
-    this.clock = d.getHours() + ":" + d.getMinutes();
+    this.clock = new Date();
 
     this.service.status.subscribe(msg => {
       if(msg.event == "status"){
@@ -44,8 +43,7 @@ export class StatusBarComponent implements OnInit {
     this.service.sendMsg("getPage", "");
 
     setInterval(function() {
-      var d = new Date();
-      this.clock = d.getHours() + ":" + d.getMinutes();
+      this.clock = new Date();
     }, 1000);
   }
 
