@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PageService } from '../page.service';
 import { youtubeUrl } from '../classes/youtubeUrl';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-youtube-page',
@@ -11,6 +12,8 @@ export class YoutubePageComponent implements OnInit {
 
   page = "youtube";
   urls: youtubeUrl[];
+
+  faSpinner = faSpinner;
 
   constructor(private service: PageService) { }
 
