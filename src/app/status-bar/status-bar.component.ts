@@ -24,10 +24,15 @@ export class StatusBarComponent implements OnInit {
   faPowerOff = faPowerOff;
 
   statusbar: statusbar;
+  clock: string;
 
   constructor(private service: StatusBarService, private sender: SenderService ) { }
 
   ngOnInit() {
+
+    var d = new Date();
+    this.clock = d.getHours() + ":" + d.getMinutes();
+
     this.service.status.subscribe(msg => {
       if(msg.event == "status"){
         this.statusbar = JSON.parse(msg.data);
@@ -37,6 +42,11 @@ export class StatusBarComponent implements OnInit {
 
     this.service.sendMsg("getStatus", "");
     this.service.sendMsg("getPage", "");
+
+    setInterval(function() {
+      var d = new Date();
+      this.clock = d.getHours() + ":" + d.getMinutes();
+    }, 1000);
   }
 
   changeBrightness(): void {

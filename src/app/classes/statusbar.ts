@@ -4,5 +4,4 @@ export class statusbar {
     bluetooth: boolean;
     wifi: boolean;
     batteryValue: number;
-    hour: Time;
 }

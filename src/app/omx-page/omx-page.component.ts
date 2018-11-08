@@ -33,7 +33,7 @@ export class OmxPageComponent implements OnInit {
   loadOmxPage(): void {
     if(this.path.length > 0){
 
-        this.service.sendSocketMessage("explore directory", self.stringPath());
+        //this.service.sendSocketMessage("explore directory", self.stringPath());
 
     } else {
         this.service.sendSocketMessage("load omx", "");

@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  ws_url: "localhost:8080"
-  //ws_url: "infotainment_srv:8080"
+  //ws_url: "localhost:8080"
+  ws_url: "infotainment_srv:8080"
 };
 
 /*

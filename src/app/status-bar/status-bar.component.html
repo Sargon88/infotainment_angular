@@ -19,7 +19,7 @@
                     <fa-icon *ngIf="statusbar.batteryValue > 75 && statusbar.batteryValue <= 90" [icon]="faBatteryThreeQuarters" size="lg" style="color:dodgerblue"></fa-icon>
                     <fa-icon *ngIf="statusbar.batteryValue > 90" [icon]="faBatteryFull" size="lg" style="color:dodgerblue"></fa-icon>
                 </span>
-                <div class="navbar-text ml-4" id="hour" style="color:dodgerblue">{{statusbar.hour}}</div>
+                <div class="navbar-text ml-4" id="hour" style="color:dodgerblue">{{clock}}</div>
                 <div class="navbar-text ml-4" id="off" (click)="reboot()"><fa-icon [icon]="faPowerOff" size="lg" style="color:crimson"></fa-icon></div>
             </div><!-- /.navbar-right -->
         </nav>
