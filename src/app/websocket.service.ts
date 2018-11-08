@@ -48,6 +48,12 @@ export class WebsocketService {
           }).on('url history', (data) => {
             var msg = new socketmessage("url history", data);
             observer.next(msg);
+          }).on('loaded playlist dir', (data) => {
+            var msg = new socketmessage("loaded playlist dir", data);
+            observer.next(msg);
+          }).on('loaded omx page', (data) => {
+            var msg = new socketmessage("loaded omx page", data);
+            observer.next(msg);
           })
           return () => {
             this.socket.disconnect();

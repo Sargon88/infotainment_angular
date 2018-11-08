@@ -6,6 +6,7 @@ export class playlistModel{
     //TODO rivedere l'inizializzazione dell'array dei files
     constructor(name: string){
         this.name = name;
+        this.files = [];
         this.screenName = this.name + " (" + this.files.length + ")";
         
     }

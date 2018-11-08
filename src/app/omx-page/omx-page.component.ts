@@ -15,32 +15,53 @@ export class OmxPageComponent implements OnInit {
   drives: fileModel[];
   message: string;
   selectedPlaylist: playlistModel;
+  playlistsList: playlistModel[];
 
   constructor(private service: PageService) { }
 
   ngOnInit() {
+    this.playlistsList = [];
+    this.path = [];
+    this.drives = [];
+
     this.service.page.subscribe(msg => {
-      if(msg.event == ""){
-        var data = JSON.parse(msg.data);   
+      if(msg.event == "loaded playlist dir"){
+        this.loadedPlaylistAction(msg.data);
       }
     });
 
-    this.service.sendSocketMessage("", "");
+    this.loadOmxPage();
   }
 
 
+  loadedPlaylistAction(msg: string): void{
+    var listArray = JSON.parse(msg);
+
+    for(var i = 0; i < listArray.length; i++){
+      var ar = listArray[i];
+
+      var plm = new playlistModel(ar);
+      this.playlistsList.push(plm);
+    }
+
+    this.selectedPlaylist = this.playlistsList[0];
+
+  }
+
 
   loadOmxPage(): void {
+
+      console.log("loadOmxPage:" + this.path.length);
     if(this.path.length > 0){
 
-        //this.service.sendSocketMessage("explore directory", self.stringPath());
+        this.service.sendSocketMessage("explore directory", this.stringPath(this.path));
 
     } else {
         this.service.sendSocketMessage("load omx", "");
 
         this.service.page.subscribe(msg =>{
           if(msg.event == "loaded omx page"){
-
+            console.log("loaded omx page");
             var driveArray: string[];
             var data = msg.data
             if(data != ""){
@@ -53,6 +74,8 @@ export class OmxPageComponent implements OnInit {
                 this.drives = [];
                 this.message = "Nessuna periferica connessa";
             }
+
+            console.log(JSON.stringify(this.drives));
           }
         })
         
@@ -73,6 +96,13 @@ export class OmxPageComponent implements OnInit {
 
     return tempDrives;
 
+  }
+
+  stringPath(p: string[]): string{
+    var path = p.join();
+    path = path.replace(/[, ]+/g, "").trim();
+
+    return path;
   }
 
 }
